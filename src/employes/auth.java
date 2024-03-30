@@ -10,8 +10,9 @@ import java.sql.SQLException;
  */
 public class auth extends javax.swing.JFrame {
     public auth() {
-        initComponents();
+        initComponents();        
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,10 +34,12 @@ public class auth extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         jPanel1.setBackground(new java.awt.Color(20, 49, 9));
 
         jPanel3.setBackground(new java.awt.Color(20, 49, 9));
+        jPanel3.setToolTipText("");
 
         jLabel4.setBackground(new java.awt.Color(128, 96, 68));
         jLabel4.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
@@ -56,12 +59,13 @@ public class auth extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(128, 96, 68));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setForeground(new java.awt.Color(204, 204, 0));
+        jPanel2.setForeground(new java.awt.Color(209, 165, 70));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("LOG IN");
 
+        email_input.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         email_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 email_inputActionPerformed(evt);
@@ -87,6 +91,7 @@ public class auth extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("E-mail");
 
+        password_input.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         password_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 password_inputActionPerformed(evt);
@@ -172,7 +177,7 @@ public class auth extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -200,7 +205,7 @@ public class auth extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,19 +215,20 @@ public class auth extends javax.swing.JFrame {
                 .addGap(61, 61, 61))
         );
 
+        jPanel3.getAccessibleContext().setAccessibleName("Login");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        getAccessibleContext().setAccessibleName("Login");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -242,69 +248,13 @@ public class auth extends javax.swing.JFrame {
     }//GEN-LAST:event_password_inputActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-        Inscription inscription = new Inscription();
-        inscription.setVisible(true);
+        Inscription sign = new Inscription();
+        sign.setVisible(true);
+        sign.pack();
+        sign.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    //fonction pour se connecter a la base de données.
-    public class DatabaseConnection {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";
-    private static final String DB_USERNAME = "your_username";
-    private static final String DB_PASSWORD = "your_password";
-
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-    }
-
-    public static void main(String[] args) {
-        try (Connection connection = getConnection()) {
-            if (connection != null) {
-                System.out.println("Connected to the database!");
-            } else {
-                System.out.println("Failed to make connection!");
-            }
-        } catch (SQLException e) {
-        }
-    }
-}
-    
-    //checker si l'utilisateur est le rédacteur en chef
-    private boolean checkChef(String email , String password){
-        if(email == "chef@gmail.com" && password == "chef123"){
-            return true;
-        }else{
-            return checkJournaliste(email, password);
-        }
-    }
-    
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";
-
-    private boolean checkJournaliste(String email , String password){
-        try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            String query = "SELECT * FROM journalists WHERE email = ? AND password = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            // If the ResultSet has at least one row, journalist exists in the database
-            return resultSet.next();
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-    }
-
-    private 
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new auth().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton connexion_btn;
@@ -322,4 +272,54 @@ public class auth extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField password_input;
     // End of variables declaration//GEN-END:variables
+
+    public class Auth{
+        private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";        
+        private static final String DB_USERNAME = "your_username";
+        private static final String DB_PASSWORD = "your_password";
+
+        //fonction pour se connecter a la base de données.
+        public class DatabaseConnection {
+
+        public static Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        }
+
+        public static void main(String[] args) {
+            try (Connection connection = getConnection()) {
+                if (connection != null) {
+                    System.out.println("Connected to the database!");
+                } else {
+                    System.out.println("Failed to make connection!");
+                }
+            }catch (SQLException e) {
+            }
+        }
+    }
+    
+        //checker si l'utilisateur est le rédacteur en chef
+        private boolean checkChef(String email , String password){
+            if(email == "chef@gmail.com" && password == "chef123"){
+                return true;
+            }else{
+                return checkJournaliste(email, password);
+            }
+        }
+    
+        private boolean checkJournaliste(String email , String password){
+            try (Connection connection = DriverManager.getConnection(DB_URL)) {
+                String query = "SELECT * FROM journalists WHERE email = ? AND password = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                // If the ResultSet has at least one row, journalist exists in the database
+                return resultSet.next();
+            } catch (SQLException e) {
+                return false;
+            }
+        }
+    }
 }
+

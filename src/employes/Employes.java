@@ -14,8 +14,10 @@ public class Employes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        auth authFrame = new auth();
-        authFrame.setVisible(true);
+        auth LoginFrame = new auth();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setLocationRelativeTo(null);
     }
     
 }
