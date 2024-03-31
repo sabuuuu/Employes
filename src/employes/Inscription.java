@@ -1,14 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package employes;
+import java.sql.*;
 
 /**
- *
  * @author Sabrina Yf
  */
 public class Inscription extends javax.swing.JFrame {
+    public static Connection conn;
+    public static Statement state;
+            
+    public static void main(String args[]){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL","sab","admin123");
+            state = conn.createStatement();
+            System.out.println("Connected ! :) \n"+conn);
+        }catch(Exception e){
+            System.out.println("Error ! =>>>" + e);
+        }
+    }
+    
     public Inscription() {
         initComponents();
     }
@@ -108,7 +118,6 @@ public class Inscription extends javax.swing.JFrame {
         });
 
         jPasswordField1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jPasswordField1.setText("jPasswordField1");
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
@@ -288,6 +297,7 @@ public class Inscription extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -330,7 +340,4 @@ public class Inscription extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 
-    public class Signin{
-        
-    }
 }
