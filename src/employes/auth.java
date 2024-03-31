@@ -1,4 +1,6 @@
 package employes;
+import java.sql.*;
+
 /**
  * @author Sabrina Yf
  */
@@ -265,5 +267,42 @@ public class auth extends javax.swing.JFrame {
     private javax.swing.JPasswordField password_input;
     // End of variables declaration//GEN-END:variables
 
-}
+    public class Authentication {
+        private static final String REDACTEUR_EN_CHEF_USERNAME = "chef@gmail.com";
+        private static final String REDACTEUR_EN_CHEF_PASSWORD = "chef123";
+        private static final String DB_URL = "jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL";
+        private static final String DB_PASSWORD = "admin123";
+        private static final String DB_USERNAME = "sab";
 
+        public String authenticate(String email, String password) {
+            // Check if the user is the editor-in-chief
+            if (email.equals(REDACTEUR_EN_CHEF_USERNAME) && password.equals(REDACTEUR_EN_CHEF_PASSWORD)) {
+                return "editor"; // Authentication successful for the editor-in-chief
+            } else {
+                // Check if the user is a journalist in the database
+                if (authenticateJournalistFromDatabase(email, password)) {
+                    return "journalist"; // Authentication successful for a journalist
+                }else{
+                    return "";
+                }
+
+            }
+        }
+
+        private boolean authenticateJournalistFromDatabase(String email, String password) {
+            try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
+                String query = "SELECT * FROM journalists WHERE email = ? AND password = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                // If the ResultSet has at least one row, journalist exists in the database
+                return resultSet.next();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+}
