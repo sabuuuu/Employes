@@ -175,9 +175,9 @@ public class auth extends javax.swing.JFrame {
                         .addGap(169, 169, 169)
                         .addComponent(jLabel4))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(21, 21, 21)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -195,7 +195,7 @@ public class auth extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -227,8 +227,6 @@ public class auth extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        getAccessibleContext().setAccessibleName("Login");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,53 +271,5 @@ public class auth extends javax.swing.JFrame {
     private javax.swing.JPasswordField password_input;
     // End of variables declaration//GEN-END:variables
 
-    public class Auth{
-        private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";        
-        private static final String DB_USERNAME = "your_username";
-        private static final String DB_PASSWORD = "your_password";
-
-        //fonction pour se connecter a la base de données.
-        public class DatabaseConnection {
-
-        public static Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        }
-
-        public static void main(String[] args) {
-            try (Connection connection = getConnection()) {
-                if (connection != null) {
-                    System.out.println("Connected to the database!");
-                } else {
-                    System.out.println("Failed to make connection!");
-                }
-            }catch (SQLException e) {
-            }
-        }
-    }
-    
-        //checker si l'utilisateur est le rédacteur en chef
-        private boolean checkChef(String email , String password){
-            if(email == "chef@gmail.com" && password == "chef123"){
-                return true;
-            }else{
-                return checkJournaliste(email, password);
-            }
-        }
-    
-        private boolean checkJournaliste(String email , String password){
-            try (Connection connection = DriverManager.getConnection(DB_URL)) {
-                String query = "SELECT * FROM journalists WHERE email = ? AND password = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, email);
-                preparedStatement.setString(2, password);
-                ResultSet resultSet = preparedStatement.executeQuery();
-
-                // If the ResultSet has at least one row, journalist exists in the database
-                return resultSet.next();
-            } catch (SQLException e) {
-                return false;
-            }
-        }
-    }
 }
 
