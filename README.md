@@ -1,2 +1,2 @@
 # Employes
-Emloyes side of a management of national magazines destktop app
+Emloyes side of a management of national magazines desktop app
