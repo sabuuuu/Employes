@@ -1,5 +1,6 @@
 package employes;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  * @author Sabrina Yf
@@ -230,7 +231,26 @@ public class auth extends javax.swing.JFrame {
     private void connexion_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connexion_btnActionPerformed
         String email = email_input.getText();
         String password = new String(password_input.getPassword());
-        
+         Authentication authentication = new Authentication(); // Create an instance of the Authentication class
+    
+        String userType = authentication.authenticate(email, password); // Call the authenticate method
+        // Check the userType returned by the authentication
+        if (userType != null && userType.equals("exists")) {
+            // Authentication successful for the editor-in-chief
+            // Perform actions for the editor-in-chief
+            JOptionPane.showMessageDialog(null, "Authentication successful! Welcome, Editor-in-chief!");
+        } else if (userType != null && userType.equals("Correspondant")) {
+            // Authentication successful for a journalist (Correspondant)
+            // Perform actions for a journalist
+            JOptionPane.showMessageDialog(null, "Authentication successful! Welcome, Correspondant Journalist!");
+        } else if (userType != null && userType.equals("Permanent")) {
+            // Authentication successful for a journalist (Permanent)
+            // Perform actions for a journalist
+            JOptionPane.showMessageDialog(null, "Authentication successful! Welcome, Permanent Journalist!");
+        } else {
+            // Authentication failed
+            JOptionPane.showMessageDialog(null, "Invalid email or password!");
+        }
     }//GEN-LAST:event_connexion_btnActionPerformed
 
     private void email_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_inputActionPerformed
@@ -277,32 +297,36 @@ public class auth extends javax.swing.JFrame {
         public String authenticate(String email, String password) {
             // Check if the user is the editor-in-chief
             if (email.equals(REDACTEUR_EN_CHEF_USERNAME) && password.equals(REDACTEUR_EN_CHEF_PASSWORD)) {
-                return "editor"; // Authentication successful for the editor-in-chief
+                return "exists"; 
             } else {
-                // Check if the user is a journalist in the database
-                if (authenticateJournalistFromDatabase(email, password)) {
-                    return "journalist"; // Authentication successful for a journalist
-                }else{
-                    return "";
+                String journalistType = authenticateJournalistFromDatabase(email, password);
+                if (journalistType != null) {
+                    return journalistType;  
+                } else {
+                    return "nothing found";  
                 }
-
             }
         }
 
-        private boolean authenticateJournalistFromDatabase(String email, String password) {
+        private String authenticateJournalistFromDatabase(String email, String password) {
             try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
-                String query = "SELECT * FROM journalists WHERE email = ? AND password = ?";
+                String query = "SELECT type FROM journalistes WHERE e-mail = ? AND mdp = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, password);
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                // If the ResultSet has at least one row, journalist exists in the database
-                return resultSet.next();
+                if (resultSet.next()) {
+                    String type = resultSet.getString("type");
+                    return type; 
+                } else {
+                    return ""; 
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
-                return false;
+                return null;
             }
         }
+
     }
 }
