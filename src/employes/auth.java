@@ -231,25 +231,33 @@ public class auth extends javax.swing.JFrame {
     private void connexion_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connexion_btnActionPerformed
         String email = email_input.getText();
         String password = new String(password_input.getPassword());
-         Authentication authentication = new Authentication(); // Create an instance of the Authentication class
+         Authentication authentication = new Authentication();  
     
-        String userType = authentication.authenticate(email, password); // Call the authenticate method
-        // Check the userType returned by the authentication
+        String userType = authentication.authenticate(email, password); 
+ 
         if (userType != null && userType.equals("exists")) {
-            // Authentication successful for the editor-in-chief
-            // Perform actions for the editor-in-chief
-            JOptionPane.showMessageDialog(null, "Authentication successful! Welcome, Editor-in-chief!");
+            JOptionPane.showMessageDialog(null, "Connexion réussie!");
+            home HomePage = new home();
+            HomePage.setVisible(true);
+            HomePage.pack();
+            HomePage.setLocationRelativeTo(null);
+            this.dispose();
         } else if (userType != null && userType.equals("Correspondant")) {
-            // Authentication successful for a journalist (Correspondant)
-            // Perform actions for a journalist
-            JOptionPane.showMessageDialog(null, "Authentication successful! Welcome, Correspondant Journalist!");
+            JOptionPane.showMessageDialog(null, "Connexion réussie!");
+            Correspondant Cors = new Correspondant();
+            Cors.setVisible(true);
+            Cors.pack();
+            Cors.setLocationRelativeTo(null);
+            this.dispose();
         } else if (userType != null && userType.equals("Permanent")) {
-            // Authentication successful for a journalist (Permanent)
-            // Perform actions for a journalist
-            JOptionPane.showMessageDialog(null, "Authentication successful! Welcome, Permanent Journalist!");
+            JOptionPane.showMessageDialog(null, "Connexion réussie!");
+            Permanent Perm = new Permanent();
+            Perm.setVisible(true);
+            Perm.pack();
+            Perm.setLocationRelativeTo(null);
+            this.dispose();
         } else {
-            // Authentication failed
-            JOptionPane.showMessageDialog(null, "Invalid email or password!");
+            JOptionPane.showMessageDialog(null, "E-mail ou mot de passe incorrecte !");
         }
     }//GEN-LAST:event_connexion_btnActionPerformed
 
@@ -295,8 +303,7 @@ public class auth extends javax.swing.JFrame {
         private static final String DB_USERNAME = "sab";
 
         public String authenticate(String email, String password) {
-            // Check if the user is the editor-in-chief
-            if (email.equals(REDACTEUR_EN_CHEF_USERNAME) && password.equals(REDACTEUR_EN_CHEF_PASSWORD)) {
+             if (email.equals(REDACTEUR_EN_CHEF_USERNAME) && password.equals(REDACTEUR_EN_CHEF_PASSWORD)) {
                 return "exists"; 
             } else {
                 String journalistType = authenticateJournalistFromDatabase(email, password);
