@@ -31,7 +31,7 @@ public class auth extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login");
+        setTitle("DzVues - Connexion");
 
         jPanel1.setBackground(new java.awt.Color(20, 49, 9));
 
@@ -54,12 +54,13 @@ public class auth extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employes/akh2.png"))); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(128, 96, 68));
+        jPanel2.setBackground(new java.awt.Color(227, 202, 171));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setForeground(new java.awt.Color(209, 165, 70));
+        jPanel2.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(69, 98, 78));
         jLabel1.setText("LOG IN");
 
         email_input.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -70,7 +71,7 @@ public class auth extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(69, 98, 78));
         jLabel2.setText("Password");
 
         connexion_btn.setBackground(new java.awt.Color(20, 49, 9));
@@ -85,7 +86,7 @@ public class auth extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(69, 98, 78));
         jLabel3.setText("E-mail");
 
         password_input.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -96,10 +97,10 @@ public class auth extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setForeground(new java.awt.Color(69, 98, 78));
         jLabel6.setText("J'ai pas de compte ? ");
 
-        jButton1.setBackground(new java.awt.Color(128, 96, 68));
+        jButton1.setBackground(new java.awt.Color(227, 202, 171));
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(20, 49, 9));
         jButton1.setText("je m'inscris");
