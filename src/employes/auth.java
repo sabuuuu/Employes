@@ -299,9 +299,9 @@ public class auth extends javax.swing.JFrame {
     public class Authentication {
         private static final String REDACTEUR_EN_CHEF_USERNAME = "chef@gmail.com";
         private static final String REDACTEUR_EN_CHEF_PASSWORD = "chef123";
-        private static final String DB_URL = "jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL";
-        private static final String DB_PASSWORD = "admin123";
-        private static final String DB_USERNAME = "sab";
+        private static final String DB_URL = "jdbc:mysql://localhost:3308/dzvues";
+        private static final String DB_PASSWORD = "";
+        private static final String DB_USERNAME = "root";
 
         public String authenticate(String email, String password) {
              if (email.equals(REDACTEUR_EN_CHEF_USERNAME) && password.equals(REDACTEUR_EN_CHEF_PASSWORD)) {
@@ -318,7 +318,7 @@ public class auth extends javax.swing.JFrame {
 
         private String authenticateJournalistFromDatabase(String email, String password) {
             try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
-                String query = "SELECT type FROM journalistes WHERE e-mail = ? AND mdp = ?";
+                String query = "SELECT type FROM journaliste WHERE `e-mail` = ? AND mdp = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, password);
