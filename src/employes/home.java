@@ -4,6 +4,14 @@
  */
 package employes;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dell
@@ -26,48 +34,201 @@ public class home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        titre_text = new javax.swing.JTextField();
+        web_text = new javax.swing.JTextField();
+        type_box = new javax.swing.JComboBox<>();
+        format_box = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        date_pick = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DzVues  - Chef de rédaction ");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(20, 49, 9));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employes/a1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 25, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(227, 202, 171));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton1.setText("Déconnexion");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setPreferredSize(new java.awt.Dimension(83, 33));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(765, 25, 134, -1));
+
+        jButton2.setBackground(new java.awt.Color(227, 202, 171));
+        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton2.setText("Séléctionner articles");
+        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.setPreferredSize(new java.awt.Dimension(122, 33));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 25, 169, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, -1));
+
+        jPanel3.setBackground(new java.awt.Color(227, 202, 171));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel2.setText("Créer une nouvelle revue");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 13, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(20, 49, 9));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Home");
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Titre");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 27, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(366, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(362, 362, 362))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jLabel1)
-                .addContainerGap(395, Short.MAX_VALUE))
-        );
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Site web");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 90, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Genre");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 153, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Date Publication");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 223, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Format");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 286, -1, -1));
+
+        titre_text.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        titre_text.setText(" ");
+        titre_text.setPreferredSize(new java.awt.Dimension(71, 33));
+        jPanel1.add(titre_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 24, 298, -1));
+
+        web_text.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        web_text.setText(" ");
+        web_text.setPreferredSize(new java.awt.Dimension(71, 33));
+        jPanel1.add(web_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 87, 298, -1));
+
+        type_box.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        type_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Scientifique", "Politique", "Sportive" }));
+        type_box.setMinimumSize(new java.awt.Dimension(72, 33));
+        jPanel1.add(type_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 150, 298, 33));
+
+        format_box.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        format_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papier", "Document numérique" }));
+        format_box.setMinimumSize(new java.awt.Dimension(72, 33));
+        jPanel1.add(format_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 276, 298, 33));
+
+        jButton3.setBackground(new java.awt.Color(227, 202, 171));
+        jButton3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jButton3.setText("Ajouter");
+        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.setPreferredSize(new java.awt.Dimension(122, 33));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 339, 246, -1));
+
+        jButton4.setBackground(new java.awt.Color(227, 202, 171));
+        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jButton4.setText("Voir liste revues");
+        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton4.setPreferredSize(new java.awt.Dimension(122, 33));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 402, 246, -1));
+
+        date_pick.setDateFormatString("dd-MM-yyyy");
+        date_pick.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jPanel1.add(date_pick, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 213, 298, 33));
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 54, 900, 480));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 68, 1070, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        auth LoginFrame = new auth();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Articles LoginFrame = new Articles();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String titre = titre_text.getText();
+        String site = web_text.getText();
+        Date date = date_pick.getDate();
+        String datePublication = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        datePublication = dateFormat.format(date);
+        Object obj1 = type_box.getSelectedItem();
+        String genre = (String) obj1;
+        Object obj2 = format_box.getSelectedItem();
+        String format = (String) obj2;
+        AjouterRevue ajouter = new AjouterRevue();    
+        boolean success = ajouter.Ajout(datePublication ,format,genre,titre,site);
+        if (success ) {
+            JOptionPane.showMessageDialog(null, "Insertion réussie!");
+            Liste Perm = new Liste();
+            Perm.setVisible(true);
+            Perm.pack();
+            Perm.setLocationRelativeTo(null);
+            this.dispose();
+            System.out.println("revue ajoutée :) ");
+        }else{
+            JOptionPane.showMessageDialog(null, "Ajout echoué");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Liste LoginFrame = new Liste();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +266,51 @@ public class home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser date_pick;
+    private javax.swing.JComboBox<String> format_box;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField titre_text;
+    private javax.swing.JComboBox<String> type_box;
+    private javax.swing.JTextField web_text;
     // End of variables declaration//GEN-END:variables
+
+        public class AjouterRevue {
+        private static final String DB_URL = "jdbc:mysql://localhost:3308/dzvues";
+        private static final String DB_PASSWORD = "";
+        private static final String DB_USERNAME = "root";
+
+        public boolean Ajout(String datePublication ,String format,String genre,String titre,String site) {
+            try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
+                String query = "INSERT INTO revue (datePublication,format,genre,titre,site) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, datePublication);
+                preparedStatement.setString(2, format);
+                preparedStatement.setString(3, genre);
+                preparedStatement.setString(4, titre);
+                preparedStatement.setString(5, site);
+                // Execute the INSERT query
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                // Check if the journalist was inserted successfully
+                return rowsAffected > 0;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+
 }
