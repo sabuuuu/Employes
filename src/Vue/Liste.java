@@ -7,6 +7,7 @@ public class Liste extends javax.swing.JFrame {
 
     public Liste() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

@@ -20,6 +20,8 @@ public class Articles extends javax.swing.JFrame {
     public ResultSet rs;
     public Articles() {
         initComponents();
+        setTitle("DzVues-Articles");
+        setLocationRelativeTo(null);
     }
     public void valider(int ligne){
         int choice = JOptionPane.showConfirmDialog(null, "Voulez-vous valider cette article?", "Validation", JOptionPane.YES_NO_OPTION);

@@ -7,7 +7,8 @@ import javax.swing.JOptionPane;
  */
 public class auth extends javax.swing.JFrame {
     public auth() {
-        initComponents();        
+        initComponents();   
+        setLocationRelativeTo(null);
     }
     
 
@@ -259,7 +260,7 @@ public class auth extends javax.swing.JFrame {
             this.dispose();
         } else if (userType != null && userType.equals("Correspondant")) {
             JOptionPane.showMessageDialog(null, "Connexion réussie!");
-            Correspondant Cors = new Correspondant();
+            JournalistHome Cors = new JournalistHome();
             Cors.setVisible(true);
             Cors.pack();
             Cors.setLocationRelativeTo(null);
