@@ -1,4 +1,4 @@
-package employes;
+package Vue;
 
 /**
  *
@@ -160,7 +160,7 @@ public class Correspondant extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(20, 49, 9));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employes/a1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vue/a1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

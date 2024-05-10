@@ -1,4 +1,4 @@
-package employes;
+package Vue;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -52,7 +52,7 @@ public class auth extends javax.swing.JFrame {
         jLabel5.setText("plate-forme de gestion");
         jLabel5.setToolTipText("");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employes/akh2.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vue/akh2.png"))); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(227, 202, 171));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -90,6 +90,7 @@ public class auth extends javax.swing.JFrame {
         jLabel3.setText("E-mail");
 
         password_input.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        password_input.setOpaque(true);
         password_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 password_inputActionPerformed(evt);
@@ -232,8 +233,21 @@ public class auth extends javax.swing.JFrame {
     private void connexion_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connexion_btnActionPerformed
         String email = email_input.getText();
         String password = new String(password_input.getPassword());
-         Authentication authentication = new Authentication();  
-    
+        
+        // Regex pattern for email validation
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        // Regex pattern for password validation (minimum 8characters et un chiffre)
+        String passwordRegex = "^(?=.*[0-9]).{8,}$";
+
+        // Check if the email matches the regex pattern
+        if (!email.matches(emailRegex)) {
+            JOptionPane.showMessageDialog(null, "Adresse e-mail invalide !");
+            return; 
+        }
+
+        
+        Authentication authentication = new Authentication();  
         String userType = authentication.authenticate(email, password); 
  
         if (userType != null && userType.equals("exists")) {

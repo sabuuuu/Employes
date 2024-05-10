@@ -1,4 +1,4 @@
-package employes;
+package Vue;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -247,7 +247,7 @@ public class Inscription extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("pour gérer votre activité.");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employes/akh2.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vue/akh2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -323,6 +323,33 @@ public class Inscription extends javax.swing.JFrame {
         String type = (String) obj;
         SignUp signUp = new SignUp();    
         String adresse = adresse_txt.getText();
+        
+        // Regex patterns for validation
+        String nomPrenomRegex = "^[^\\d].*"; // Does not start with a number
+        String telRegex = "^\\d{10}$"; // Exactly 10 numbers
+        String passwordRegex = "^(?=.*[0-9]).{8,}$"; // At least 8 characters and 1 number
+
+        // Check each field against its respective regex pattern
+        if (!nom.matches(nomPrenomRegex)) {
+            JOptionPane.showMessageDialog(null, "Le nom ne doit pas commencer par un chiffre !");
+            return; // Stop further execution if nom is invalid
+        }
+
+        if (!prenom.matches(nomPrenomRegex)) {
+            JOptionPane.showMessageDialog(null, "Le prénom ne doit pas commencer par un chiffre !");
+            return; // Stop further execution if prenom is invalid
+        }
+
+        if (!tel.matches(telRegex)) {
+            JOptionPane.showMessageDialog(null, "Le numéro de téléphone doit contenir exactement 10 chiffres !");
+            return; // Stop further execution if tel is invalid
+        }
+
+        if (!mdp.matches(passwordRegex)) {
+            JOptionPane.showMessageDialog(null, "Le mot de passe doit contenir au moins 8 caractères et 1 chiffre !");
+            return; // Stop further execution if mdp is invalid
+        }
+
         boolean success = signUp.signUp(nom ,prenom,tel,adresse,email,mdp,type);
         if (success && type.equals("Permanent")) {
             JOptionPane.showMessageDialog(null, "Inscrption réussie!");

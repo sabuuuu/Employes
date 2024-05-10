@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package employes;
+package Vue;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -61,8 +61,8 @@ public class home extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(20, 49, 9));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employes/a1.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 25, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vue/a1.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(227, 202, 171));
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -74,7 +74,7 @@ public class home extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(765, 25, 134, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 134, -1));
 
         jButton2.setBackground(new java.awt.Color(227, 202, 171));
         jButton2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -86,16 +86,16 @@ public class home extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 25, 169, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 169, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 80));
 
         jPanel3.setBackground(new java.awt.Color(227, 202, 171));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel2.setText("Créer une nouvelle revue");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 13, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(20, 49, 9));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -299,8 +299,8 @@ public class home extends javax.swing.JFrame {
                 preparedStatement.setString(1, datePublication);
                 preparedStatement.setString(2, format);
                 preparedStatement.setString(3, genre);
-                preparedStatement.setString(4, titre);
-                preparedStatement.setString(5, site);
+                preparedStatement.setString(4,titre);
+                preparedStatement.setString(5,site);
                 // Execute the INSERT query
                 int rowsAffected = preparedStatement.executeUpdate();
 
