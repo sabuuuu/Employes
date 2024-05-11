@@ -1,4 +1,4 @@
-package Journalist;
+package Vue;
 /**
  *
  * @author joe

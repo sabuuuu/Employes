@@ -1,4 +1,4 @@
-package Journalist;
+package Vue;
 
 class Personnalite {
     private final int numP;

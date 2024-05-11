@@ -182,9 +182,7 @@ public class Inscription extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1007, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +237,7 @@ public class Inscription extends javax.swing.JFrame {
         boolean success = signUp.signUp(nom, prenom, tel, adresse, email, mdp, type);
         if (success && type.equals("Permanent")) {
             JOptionPane.showMessageDialog(null, "Inscrption réussie!");
-            Permanent Perm = new Permanent();
+            PermanentHome Perm = new PermanentHome();
             Perm.setVisible(true);
             Perm.pack();
             Perm.setLocationRelativeTo(null);

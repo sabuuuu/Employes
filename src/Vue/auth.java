@@ -267,7 +267,7 @@ public class auth extends javax.swing.JFrame {
             this.dispose();
         } else if (userType != null && userType.equals("Permanent")) {
             JOptionPane.showMessageDialog(null, "Connexion réussie!");
-            Permanent Perm = new Permanent();
+            PermanentHome Perm = new PermanentHome();
             Perm.setVisible(true);
             Perm.pack();
             Perm.setLocationRelativeTo(null);
